@@ -2,8 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '../../../material/material.module';
-import { Hotel } from '../models/hotel.model';
+import { MaterialModule } from '../../../../material/material.module';
+import { Hotel } from '../../models/hotel.model';
 
 
 

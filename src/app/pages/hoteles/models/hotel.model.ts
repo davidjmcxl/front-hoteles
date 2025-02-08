@@ -2,7 +2,9 @@
 
 export interface Habitacion {
   id?: string;
-  tipo: TipoHabitacion; // Usamos el enum aquí
+  nombre:string;
+  tipo: TipoHabitacion;
+  ubicacion:Ubicacion;
   costoBase: number;
   impuestos: number;
   disponible: boolean;
@@ -22,3 +24,11 @@ export interface Hotel {
   SUITE = 'Suite',
   FAMILIAR = 'Familiar'
 }
+export enum Ubicacion{
+  PRIMER = '1 piso',
+  SEGUNDO = '2 piso ',
+  TERCER = '3 piso',
+  CUARTO = '4 piso ',
+  OTRO = 'Otro piso'
+}
+

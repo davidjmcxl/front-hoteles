@@ -3,10 +3,11 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 import { MatDialogRef } from '@angular/material/dialog';
 import { Hotel } from '../../models/hotel.model';
 import { MaterialModule } from '../../../../material/material.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-agregar-hotel-dialog',
-  imports: [MaterialModule,ReactiveFormsModule],
+  imports: [MaterialModule,ReactiveFormsModule,CommonModule],
   templateUrl: './agregar-hotel-dialog.component.html',
   styleUrl: './agregar-hotel-dialog.component.scss'
 })

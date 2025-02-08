@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(correo, password)
         .then(() => {
-          this.router.navigate(['/hoteles']);
+          this.router.navigate(['/dashboard']);
           Swal.fire({
             icon: 'success',
             title: 'Inicio de sesión exitoso',

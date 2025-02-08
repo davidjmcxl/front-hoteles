@@ -10,7 +10,7 @@ import { AgregarHotelDialogComponent } from './dialogs/agregar-hotel-dialog/agre
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { AsignarHabitacionesDialogComponent } from './dialogs/asignar-habitaciones-dialog/asignar-habitaciones-dialog.component';
-import { EditarHotelDialogComponent } from './editar-hotel-dialog/editar-hotel-dialog.component';
+import { EditarHotelDialogComponent } from './dialogs/editar-hotel-dialog/editar-hotel-dialog.component';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class HotelesComponent implements OnInit {
   dataSource = new MatTableDataSource<Hotel>();
   hoteles: Hotel[] = [];
 
-  constructor(private hotelService: HotelService, private snackBar: MatSnackBar, private dialog: MatDialog) {}
+    constructor(private hotelService: HotelService, private snackBar: MatSnackBar, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.getHoteles()

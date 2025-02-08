@@ -1,5 +1,4 @@
-<h2 mat-dialog-title>Asignar Habitaciones a {{ data.hotel.nombre }}</h2>
-
+<h2 mat-dialog-title>Editar Habitacion</h2>
 <mat-dialog-content>
   <form [formGroup]="habitacionForm">
     <div class="form-container">
@@ -38,26 +37,11 @@
       <mat-checkbox formControlName="disponible">Disponible</mat-checkbox>
     </div>
   </form>
-
-  <!-- Contenedor para centrar el botón -->
-  <div class="button-container">
-    <button mat-fab  matTooltip="Asignar habitación" class="add-button"
-            (click)="agregarHabitacion()" [disabled]="habitacionForm.invalid">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <mat-list>
-    <mat-list-item *ngFor="let habitacion of habitaciones">
-      <span>{{ habitacion.tipo }} - ${{ habitacion.costoBase }} ({{ habitacion.disponible ? 'Disponible' : 'No disponible' }})</span>
-    </mat-list-item>
-  </mat-list>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="primary" (click)="guardar()" [disabled]="habitaciones.length === 0">
-    Guardar Habitaciones
-  </button>
-
   <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="guardarCambios()" [disabled]="habitacionForm.invalid">
+    Guardar
+  </button>
 </mat-dialog-actions>

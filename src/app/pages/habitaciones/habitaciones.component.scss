@@ -1,0 +1,76 @@
+
+/* Campo de selección de hotel */
+mat-form-field {
+  min-width: 250px;
+  margin-top: 10px;
+}
+
+/* Buscador */
+.buscador {
+  width: 300px;
+  height: 80px;
+}
+
+/* Tarjeta contenedora de la tabla */
+.habitacion-table {
+  margin: 30px auto;
+  padding: 30px;
+  max-width: 90%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la tabla */
+.title-table {
+  font-size: 28px;
+  text-align: center;
+  color: rgb(1, 9, 85);
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Estilo para celdas y encabezados */
+th, td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Alternar color de filas */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Estado activo e inactivo */
+.activo {
+  color: green;
+  font-weight: bold;
+}
+
+.inactivo {
+  color: red;
+  font-weight: bold;
+}
+
+/* Estilos para los chips de estado */
+mat-chip {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Mensaje cuando no hay habitaciones */
+.sin-resultados {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #dd4040;
+  margin-top: 20px;
+}

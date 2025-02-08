@@ -1,0 +1,22 @@
+<!-- Navbar Superior -->
+<mat-toolbar color="primary">
+  <span class="logo">HotelesAPP</span>
+
+  <span class="spacer"></span>
+
+  <!-- Botones de navegación -->
+  <button mat-button routerLink="/dashboard/hoteles" routerLinkActive="active">
+    <mat-icon>business</mat-icon> Hoteles
+  </button>
+  <button mat-button routerLink="/dashboard/habitaciones" routerLinkActive="active">
+    <mat-icon>hotel</mat-icon> Habitaciones
+  </button>
+  <button mat-button routerLink="/dashboard/reservas" routerLinkActive="active">
+    <mat-icon>book_online</mat-icon> Reservas
+  </button>
+</mat-toolbar>
+
+<!-- Contenido Principal -->
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

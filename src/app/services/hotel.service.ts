@@ -60,8 +60,7 @@ export class HotelService {
   }
 
   async asignarHabitacion(hotelId: string, habitaciones: Habitacion[]) {
-    console.log(hotelId);
-    console.log(habitaciones);
+
 
     const habitacionesRef = collection(this.firestore, `hoteles/${hotelId}/habitaciones`);
 
