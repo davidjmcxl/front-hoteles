@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Agregar Nuevo Hotel</h2>
+<mat-dialog-content>
+  <form [formGroup]="hotelForm" >
+    <mat-form-field appearance="outline" class="full-width mt-3">
+      <mat-label class="mb-3">Nombre del Hotel</mat-label>
+      <input matInput formControlName="nombre" required >
+      <mat-error *ngIf="hotelForm.get('nombre')?.invalid">Nombre requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Dirección</mat-label>
+      <input matInput formControlName="direccion" required>
+      <mat-error *ngIf="hotelForm.get('direccion')?.invalid">Dirección requerida</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="activo">Activo</mat-checkbox>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="guardarHotel()" [disabled]="hotelForm.invalid">
+    Guardar
+  </button>
+</mat-dialog-actions>

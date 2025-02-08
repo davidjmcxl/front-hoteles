@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Asignar Habitaciones a {{ data.hotel.nombre }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="habitacionForm">
+    <div class="form-container">
+      <mat-form-field appearance="outline" class="full-width mt-3 me-3">
+        <mat-label>Tipo de Habitación</mat-label>
+        <mat-select formControlName="tipo" required>
+          <mat-option *ngFor="let tipo of tiposHabitacion" [value]="tipo">{{ tipo }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="habitacionForm.get('tipo')?.invalid">Seleccione un tipo</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Costo Base</mat-label>
+        <input matInput type="number" formControlName="costoBase" required>
+        <mat-error *ngIf="habitacionForm.get('costoBase')?.invalid">Ingrese un costo válido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width mt-3 me-3">
+        <mat-label>Impuestos</mat-label>
+        <input matInput type="number" formControlName="impuestos" required>
+        <mat-error *ngIf="habitacionForm.get('impuestos')?.invalid">Ingrese impuestos válidos</mat-error>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="disponible">Disponible</mat-checkbox>
+    </div>
+  </form>
+
+  <!-- Contenedor para centrar el botón -->
+  <div class="button-container">
+    <button mat-fab  matTooltip="Asignar habitación" class="add-button"
+            (click)="agregarHabitacion()" [disabled]="habitacionForm.invalid">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let habitacion of habitaciones">
+      <span>{{ habitacion.tipo }} - ${{ habitacion.costoBase }} ({{ habitacion.disponible ? 'Disponible' : 'No disponible' }})</span>
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="guardar()" [disabled]="habitaciones.length === 0">
+    Guardar Habitaciones
+  </button>
+
+  <button mat-button (click)="cancelar()">Cancelar</button>
+</mat-dialog-actions>

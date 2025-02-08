@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-around mt-3">
+  <button mat-raised-button color="primary" class="nuevo-hotel-btn" (click)="agregarHotel()">
+    <mat-icon>add</mat-icon> Nuevo Hotel
+  </button>
+
+
+  <!-- Buscador -->
+  <mat-form-field class="buscador">
+    <mat-label>Buscar por nombre</mat-label>
+    <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ingrese nombre del hotel">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <div></div>
+  <div></div>
+</div>
+<mat-card class="hotel-table">
+  <mat-card-title>
+    Hoteles
+  </mat-card-title>
+  <mat-card-content>
+    <!-- Buscador -->
+
+
+    <!-- Tabla de hoteles -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- Nombre -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let hotel"> {{ hotel.nombre }} </td>
+      </ng-container>
+
+      <!-- Dirección -->
+      <ng-container matColumnDef="direccion">
+        <th mat-header-cell *matHeaderCellDef> Dirección </th>
+        <td mat-cell *matCellDef="let hotel"> {{ hotel.direccion }} </td>
+      </ng-container>
+
+      <!-- Cantidad de Habitaciones -->
+      <ng-container matColumnDef="habitaciones">
+        <th mat-header-cell *matHeaderCellDef> Habitaciones </th>
+        <td mat-cell *matCellDef="let hotel"> {{ hotel.habitaciones ? hotel.habitaciones.length : 0 }} </td>
+      </ng-container>
+
+      <!-- Estado -->
+      <ng-container matColumnDef="activo">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let hotel" (click)="toggleHotel(hotel)" style="cursor: pointer;" matTooltip="{{ hotel.activo ? 'Deshabilitar hotel' : 'Habilitar hotel' }}">
+          <mat-chip [ngStyle]="{
+            'background-color': hotel.activo ? '#bbfcb9' : '#fcceb9'
+
+          }">
+            {{ hotel.activo ? 'Activo' : 'Inactivo' }}
+          </mat-chip>
+        </td>
+      </ng-container>
+
+
+      <!-- Acciones -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let hotel">
+
+          <!-- Asignar habitación -->
+          <button mat-icon-button color="primary" matTooltip="Asignar habitación" (click)="asignarHabitacion(hotel)">
+            <mat-icon style="font-size: 24px;">hotel</mat-icon>
+          </button>
+
+          <!-- Editar hotel -->
+          <button mat-icon-button color="accent" matTooltip="Editar hotel" (click)="editarHotel(hotel)">
+            <mat-icon style="font-size:  24px;">edit</mat-icon>
+          </button>
+
+          <!-- Habilitar/Deshabilitar hotel con colores dinámicos -->
+
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card-content>
+</mat-card>

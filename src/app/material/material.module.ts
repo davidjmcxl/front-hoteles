@@ -16,7 +16,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
  exports:[
   MatMenuModule,
@@ -35,7 +37,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   MatCheckboxModule,
   MatSliderModule,
   MatExpansionModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,MatTooltipModule,
+  MatChipsModule,
+  MatCardModule
 
  ]
 })
