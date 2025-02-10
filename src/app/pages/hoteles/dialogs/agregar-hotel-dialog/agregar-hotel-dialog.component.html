@@ -12,7 +12,11 @@
       <input matInput formControlName="direccion" required>
       <mat-error *ngIf="hotelForm.get('direccion')?.invalid">Dirección requerida</mat-error>
     </mat-form-field>
-
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Ciudad</mat-label>
+      <input matInput formControlName="ciudad" required>
+      <mat-error *ngIf="hotelForm.get('ciudad')?.invalid">la ciudad es requerida</mat-error>
+    </mat-form-field>
     <mat-checkbox formControlName="activo">Activo</mat-checkbox>
   </form>
 </mat-dialog-content>

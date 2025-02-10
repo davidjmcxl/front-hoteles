@@ -20,6 +20,7 @@ export class HotelService {
           id: hotel.id,
           nombre: hotel.nombre,
           direccion: hotel.direccion,
+          ciudad:hotel.ciudad,
           activo: hotel.activo,
           habitaciones: [] // Inicializamos vacío, luego se llenará
         }))
@@ -46,7 +47,7 @@ export class HotelService {
 
   async actualizarHotel(hotel: Hotel) {
     const hotelDoc = doc(this.firestore, `hoteles/${hotel.id}`);
-    await updateDoc(hotelDoc, { nombre: hotel.nombre, direccion: hotel.direccion, activo: hotel.activo });
+    await updateDoc(hotelDoc, { nombre: hotel.nombre, direccion: hotel.direccion,ciudad:hotel.ciudad ,activo: hotel.activo });
   }
 
   async eliminarHotel(id: string) {
@@ -67,20 +68,5 @@ export class HotelService {
     for (const habitacion of habitaciones) {
       await addDoc(habitacionesRef, habitacion);
     }
-  }
-
-  async actualizarHabitacion(hotelId: string, habitacion: Habitacion) {
-    const habitacionDoc = doc(this.firestore, `hoteles/${hotelId}/habitaciones/${habitacion.id}`);
-    await updateDoc(habitacionDoc, {
-      tipo: habitacion.tipo,
-      costoBase: habitacion.costoBase,
-      impuestos: habitacion.impuestos,
-      disponible: habitacion.disponible
-    });
-  }
-
-  async toggleHabitacion(hotelId: string, habitacionId: string, disponible: boolean) {
-    const habitacionDoc = doc(this.firestore, `hoteles/${hotelId}/habitaciones/${habitacionId}`);
-    await updateDoc(habitacionDoc, { disponible: !disponible });
   }
 }

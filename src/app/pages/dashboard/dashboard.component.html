@@ -14,6 +14,10 @@
   <button mat-button routerLink="/dashboard/reservas" routerLinkActive="active">
     <mat-icon>book_online</mat-icon> Reservas
   </button>
+   <!-- Botón de salida -->
+   <button mat-button class="logout-btn" (click)="cerrarSesion()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
 </mat-toolbar>
 
 <!-- Contenido Principal -->

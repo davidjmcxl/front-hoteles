@@ -26,6 +26,7 @@ export class EditarHotelDialogComponent {
       id: [data.hotel.id],
       nombre: [data.hotel.nombre, [Validators.required, Validators.minLength(3)]],
       direccion: [data.hotel.direccion, [Validators.required, Validators.minLength(5)]],
+      ciudad: [data.hotel.ciudad, [Validators.required, Validators.minLength(4)]],
       activo: [data.hotel.activo]
     });
   }

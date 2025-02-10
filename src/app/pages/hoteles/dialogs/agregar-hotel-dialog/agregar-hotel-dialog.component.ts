@@ -21,6 +21,7 @@ export class AgregarHotelDialogComponent {
     this.hotelForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       direccion: ['', [Validators.required, Validators.minLength(5)]],
+      ciudad: ['', [Validators.required, Validators.minLength(4)]],
       activo: [true] , // Valor por defecto
       habitaciones:[]
     });

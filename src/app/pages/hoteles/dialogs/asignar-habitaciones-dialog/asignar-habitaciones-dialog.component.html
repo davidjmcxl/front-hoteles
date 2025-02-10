@@ -24,6 +24,11 @@
         <mat-error *ngIf="habitacionForm.get('ubicacion')?.invalid">Seleccione la ubicacion</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline" class="full-width mt-3 me-3">
+        <mat-label>Capacidad</mat-label>
+        <input matInput type="number" formControlName="capacidad" required>
+        <mat-error *ngIf="habitacionForm.get('capacidad')?.invalid">Ingrese la capacidad maxima</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-width mt-3 me-3">
         <mat-label>Costo Base</mat-label>
         <input matInput type="number" formControlName="costoBase" required>
         <mat-error *ngIf="habitacionForm.get('costoBase')?.invalid">Ingrese un costo válido</mat-error>

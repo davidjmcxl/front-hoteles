@@ -1,3 +1,4 @@
+import { Reserva } from "./reserva.model";
 
 
 export interface Habitacion {
@@ -5,9 +6,11 @@ export interface Habitacion {
   nombre:string;
   tipo: TipoHabitacion;
   ubicacion:Ubicacion;
+  capacidad: number;
   costoBase: number;
   impuestos: number;
   disponible: boolean;
+  reservas?: Reserva[];
 }
 
 export interface Hotel {
@@ -15,6 +18,7 @@ export interface Hotel {
   nombre: string;
   direccion: string;
   activo: boolean;
+  ciudad:string;
   habitaciones?: Habitacion[];
 }
 

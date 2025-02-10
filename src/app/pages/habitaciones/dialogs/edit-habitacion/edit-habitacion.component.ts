@@ -25,6 +25,7 @@ export class EditHabitacionComponent {
       id: [data.habitacion.id],
       nombre: [data.habitacion.nombre, [Validators.required, Validators.minLength(3)]],
       ubicacion: [data.habitacion.ubicacion, [Validators.required, Validators.minLength(5)]],
+      capacidad:[data.habitacion.capacidad, [Validators.required]],
       costoBase: [data.habitacion.costoBase, [Validators.required]],
       tipo: [data.habitacion.tipo, [Validators.required]],
       impuestos: [data.habitacion.impuestos, [Validators.required]],

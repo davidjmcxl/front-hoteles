@@ -6,7 +6,11 @@
       <input matInput formControlName="nombre" required>
       <mat-error *ngIf="hotelForm.get('nombre')?.invalid">Nombre requerido</mat-error>
     </mat-form-field>
-
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Ciudad</mat-label>
+      <input matInput formControlName="ciudad" required>
+      <mat-error *ngIf="hotelForm.get('ciudad')?.invalid">ciudad es requerida</mat-error>
+    </mat-form-field>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Dirección</mat-label>
       <input matInput formControlName="direccion" required>

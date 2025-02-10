@@ -27,9 +27,11 @@ export class AsignarHabitacionesDialogComponent {
       nombre: ['', Validators.required],
       tipo: ['', Validators.required],
       ubicacion: ['', Validators.required],
+      capacidad:['',Validators.required],
       costoBase: ['', [Validators.required, Validators.min(1)]],
       impuestos: ['', [Validators.required, Validators.min(0)]],
-      disponible: [true]
+      disponible: [true],
+      reservas:[]
     });
   }
 

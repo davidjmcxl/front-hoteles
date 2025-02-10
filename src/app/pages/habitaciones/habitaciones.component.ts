@@ -13,16 +13,16 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-habitaciones',
-  imports: [MaterialModule,CommonModule,ReactiveFormsModule],
+  imports: [MaterialModule, CommonModule, ReactiveFormsModule],
   templateUrl: './habitaciones.component.html',
   styleUrl: './habitaciones.component.scss'
 })
 export class HabitacionesComponent {
-  public hoteles:Hotel[]=[];
-  public hotelId!:string;
-  displayedColumns: string[] = ['N°','ubicacion','Costo', 'impuestos', 'tipo','disponible', 'acciones'];
+  public hoteles: Hotel[] = [];
+  public hotelId!: string;
+  displayedColumns: string[] = ['N°', 'ubicacion','capacidad', 'Costo', 'impuestos', 'tipo', 'disponible', 'acciones'];
   dataSourceHabitacion = new MatTableDataSource<Habitacion>();
-   constructor(private hotelService: HotelService, private habitacionService: HabitacionService, private dialog: MatDialog) {}
+  constructor(private hotelService: HotelService, private habitacionService: HabitacionService, private dialog: MatDialog) { }
 
 
 
@@ -32,24 +32,24 @@ export class HabitacionesComponent {
 
   ngOnInit() {
     this.getHoteles()
-    this.hotelSeleccionado.valueChanges.subscribe((hotelId:any) => {
-   this.habitacionService.getHabitaciones(hotelId).subscribe(habitaciones=>{
-    this.hotelId=hotelId;
-    this.dataSourceHabitacion.data = habitaciones;
-   })
+    this.hotelSeleccionado.valueChanges.subscribe((hotelId: any) => {
+      this.habitacionService.getHabitaciones(hotelId).subscribe(habitaciones => {
+        this.hotelId = hotelId;
+        this.dataSourceHabitacion.data = habitaciones;
+      })
     });
   }
-  getHoteles(){
+  getHoteles() {
     this.hotelService.obtenerHoteles().subscribe(hoteles => {
-      this.hoteles= hoteles;
+      this.hoteles = hoteles;
     });
   }
   aplicarFiltro(event: Event) {
     const filtro = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.dataSourceHabitacion.filter = filtro;
   }
-  editarHabitacion(habitacion:Habitacion){
- const dialogRef = this.dialog.open(EditHabitacionComponent, {
+  editarHabitacion(habitacion: Habitacion) {
+    const dialogRef = this.dialog.open(EditHabitacionComponent, {
       width: '600px',
       disableClose: true,
       data: { habitacion, }
@@ -57,7 +57,7 @@ export class HabitacionesComponent {
 
     dialogRef.afterClosed().subscribe((habitacionEditada: Habitacion) => {
       if (habitacionEditada) {
-        this.habitacionService.actualizarHabitacion(this.hotelId,habitacionEditada).then(() => {
+        this.habitacionService.actualizarHabitacion(this.hotelId, habitacionEditada).then(() => {
           Swal.fire('habitacion actualizada correctamente', '', 'success');
         }).catch(error => {
           Swal.fire('error al actualizar la habitacion', '', 'error');
@@ -66,15 +66,15 @@ export class HabitacionesComponent {
       }
     });
   }
-   /**
-   * Cambia el estado de disponibilidad de la habitación
-   */
-   async toggleHabitacion( habitacion: Habitacion) {
+  /**
+  * Cambia el estado de disponibilidad de la habitación
+  */
+  async toggleHabitacion(habitacion: Habitacion) {
     try {
       const nuevoEstado = !habitacion.disponible;
       await this.habitacionService.cambiarEstadoHabitacion(this.hotelId, habitacion.id as string, nuevoEstado);
       habitacion.disponible = nuevoEstado; // Actualizar en la UI
-   
+
     } catch (error) {
       console.error('Error al cambiar estado de la habitación:', error);
     }

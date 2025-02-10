@@ -21,7 +21,7 @@ import { EditarHotelDialogComponent } from './dialogs/editar-hotel-dialog/editar
 })
 export class HotelesComponent implements OnInit {
 
-  displayedColumns: string[] = ['nombre', 'direccion', 'habitaciones', 'activo', 'acciones'];
+  displayedColumns: string[] = ['nombre','ciudad' ,'direccion', 'habitaciones', 'activo', 'acciones'];
   dataSource = new MatTableDataSource<Hotel>();
   hoteles: Hotel[] = [];
 
