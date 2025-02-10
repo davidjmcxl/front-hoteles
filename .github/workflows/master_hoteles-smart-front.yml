@@ -21,13 +21,13 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '18.x'
 
       - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
-        
+          npm run test --if-present
       
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -54,9 +54,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_071BAE505BF4481388B762F2FF1BC340 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A6CDCC8CAE064D15B472CAC7036B13A9 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1E1843AA13C44DE6AFB566971E46C295 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_42DDB99FD61A4645A9979A0DBE62335D }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8297145542D84ABEBBCB8FDA1891F99B }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2EF9BFFCE9B3491DB3303E405605B561 }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
@@ -64,6 +64,5 @@ jobs:
         with:
           app-name: 'hoteles-smart-front'
           slot-name: 'Production'
-          package: dist/administracion-hoteles-app
-          
+          package: .
           
