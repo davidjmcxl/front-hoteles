@@ -64,5 +64,5 @@ jobs:
         with:
           app-name: 'hoteles-smart-front'
           slot-name: 'Production'
-          package: .
+          package: dist/administracion-hoteles-app/browser
           
